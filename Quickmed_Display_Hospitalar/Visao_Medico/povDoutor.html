@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#323e36", "error-container": "#ffdad6", "surface-container": "#e5f0eb", "on-secondary-fixed": "#002204", "surface-container-low": "#ebf6f1", "on-tertiary-fixed": "#131e17", "tertiary-fixed-dim": "#bdcabe", "on-primary": "#ffffff", "on-error": "#ffffff", "error": "#ba1a1a", "primary-container": "#1b5e20", "on-error-container": "#93000a", "tertiary-container": "#49554c", "on-primary-container": "#90d689", "tertiary-fixed": "#d9e6da", "text-secondary": "#4A5568", "on-tertiary-container": "#bcc9be", "priority-emergency-bg": "#FFEBEE", "on-surface-variant": "#41493e", "surface": "#f1fcf7", "surface-container-highest": "#dae5e0", "surface-bright": "#f1fcf7", "priority-standard-bg": "#E8F5E9", "on-secondary": "#ffffff", "on-background": "#141e1b", "border-subtle": "#E2E8E5", "secondary-fixed-dim": "#88d982", "secondary-fixed": "#a3f69c", "outline-variant": "#c0c9bb", "inverse-on-surface": "#e8f3ee", "surface-container-high": "#dfebe6", "on-secondary-container": "#217128", "surface-container-lowest": "#ffffff", "surface-variant": "#dae5e0", "priority-standard-text": "#2E7D32", "primary-fixed-dim": "#91d78a", "on-surface": "#141e1b", "on-tertiary": "#ffffff", "border-input": "#D1DBD5", "surface-pure": "#FFFFFF", "priority-emergency-text": "#C62828", "outline": "#717a6d", "secondary": "#1b6d24", "surface-dim": "#d1ddd8", "priority-urgency-text": "#F57F17", "priority-urgency-bg": "#FFF8E1", "primary-fixed": "#acf4a4", "on-tertiary-fixed-variant": "#3e4a41", "on-primary-fixed": "#002203", "secondary-container": "#a0f399", "text-muted": "#7D8A85", "on-secondary-fixed-variant": "#005312", "background": "#f1fcf7", "surface-soft": "#F8FAF9", "inverse-primary": "#91d78a", "inverse-surface": "#28332f", "surface-tint": "#2a6b2c", "primary": "#00450d", "on-primary-fixed-variant": "#0c5216", "surface-muted": "#F1F5F2" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.75rem", "margin-mobile": "1rem", "space-xl": "2rem", "space-xs": "0.5rem", "space-md": "1rem", "space-3xl": "4rem", "gutter-mobile": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem", "space-2xl": "3rem" }, "fontFamily": { "body-sm": ["manrope"], "label-md": ["manrope"], "headline-lg": ["lexend"], "body-md": ["manrope"], "display-room-mobile": ["lexend"], "display-ticket": ["lexend"], "display-room": ["lexend"], "headline-md": ["lexend"], "body-lg": ["manrope"], "display-ticket-mobile": ["lexend"], "label-lg": ["manrope"], "label-sm": ["manrope"], "caption": ["manrope"], "headline-sm": ["lexend"] }, "fontSize": { "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "display-room-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0", "fontWeight": "600" }], "display-ticket": ["96px", { "lineHeight": "104px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-room": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "500" }], "display-ticket-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "caption": ["11px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface-soft text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col justify-between"><header class="fixed top-0 w-full z-50 bg-surface-pure/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Quickmed Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U1vB_VDt4md2own32BMJS9DEW4-hICVkTuphdNKFnxUaqc9GUfY2HKFsgSaiQ7MBbGIuhOm9b-OxuQuLxTDMu2Kv6eFvzEjuAGdGssQKZpF5zcDYhPE_dgktKQY4R9Nqv6UHLMU843O4ksVcvjd47U9jaK7d4k5-xrcl2K4jqBXJjNnpnyRXc1tUIJiPWWFdnZwJeokQRanOtp3KvtWQxfo0pv03K8ji5WBiIUALqzBgK0QTQ2I9yDl0M"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">Quickmed</span><div class="hidden sm:flex items-center gap-space-xs bg-priority-standard-bg px-space-sm py-space-2xs rounded-full"><span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-priority-standard-text opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-priority-standard-text"></span></span><span class="font-label-sm text-label-sm text-priority-standard-text uppercase tracking-wider font-semibold">Painel de Atendimento em Tempo Real</span></div></div><nav class="hidden md:flex items-center gap-space-md" data-active-classes="bg-primary-container text-on-primary font-bold rounded-lg px-space-sm py-space-xs"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="painel-publico-chamadas" href="#">Painel TV</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="triagem-manchester" href="#">Triagem</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="totem-autoatendimento" href="#">Totem</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="consultorios-ativos" href="#">Consultórios</a></nav><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm bg-surface-container-low px-space-sm py-space-2xs rounded-lg"><div class="flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">volume_up</span></div><div class="flex flex-col text-right"><span class="font-headline-sm text-headline-sm text-primary font-bold leading-none tracking-tight">14:32</span><span class="font-caption text-caption text-text-muted leading-tight">24 Out, Quinta</span></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface-soft flex-1"><div class="flex flex-col w-full">
+<!-- Sub-Header / Doctor Context Bar -->
+<section class="w-full bg-surface-pure shadow-sm px-margin-desktop py-space-sm mb-space-lg">
+<div class="max-w-7xl mx-auto flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md">
+<!-- Doctor Profile & Location -->
+<div class="flex items-center gap-space-md min-w-0">
+<div class="relative">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center text-primary font-headline-sm overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[32px]">clinical_notes</span>
+</div>
+<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-priority-standard-text ring-2 ring-surface-pure"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight truncate">Dr. Marcelo Arantes</h1>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-text-secondary">CRM 142.890/SP</span>
+<span class="inline-flex items-center gap-1.5 px-space-xs py-0.5 rounded-full bg-priority-standard-bg text-priority-standard-text font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-priority-standard-text animate-pulse"></span>
+              Em Atendimento
+            </span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm text-text-muted font-body-sm text-body-sm mt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">stethoscope</span>
+              Clínica Médica &amp; Pronto Atendimento
+            </span>
+<span class="text-outline-variant">•</span>
+<span class="flex items-center gap-1 font-label-md text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">meeting_room</span>
+              Consultório 04 — Bloco B (Piso Térreo)
+            </span>
+</div>
+</div>
+</div>
+<!-- Quick Operational Controls -->
+<div class="flex flex-wrap items-center gap-space-xs w-full xl:w-auto justify-start xl:justify-end">
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container font-label-md text-label-md text-priority-standard-text hover:bg-priority-standard-bg transition-colors flex items-center gap-1.5 active:scale-95" id="btn-status-active">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+          Disponível
+        </button>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container font-label-md text-label-md text-text-secondary hover:bg-surface-container-high transition-colors flex items-center gap-1.5 active:scale-95" id="btn-status-pause">
+<span class="material-symbols-outlined text-[18px]">coffee</span>
+          Pausa Curta (5 min)
+        </button>
+<button class="px-space-md py-space-xs rounded-lg bg-priority-emergency-bg font-label-md text-label-md text-priority-emergency-text hover:bg-error-container transition-colors flex items-center gap-1.5 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+          Alerta Emergência
+        </button>
+<div class="hidden sm:flex items-center gap-2 pl-space-sm ml-space-xs bg-surface-container-lowest px-space-sm py-space-xs rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">speed</span>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted leading-tight">Tempo Médio</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">11m 30s</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Emergency Protocol Manchester Banner (Dynamic Alert) -->
+<div class="max-w-7xl mx-auto px-margin-desktop w-full mb-space-md">
+<div class="rounded-xl bg-priority-emergency-bg p-space-md flex items-center justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -left-6 -bottom-6 w-24 h-24 rounded-full bg-priority-emergency-text/10 pointer-events-none"></div>
+<div class="flex items-center gap-space-md relative z-10">
+<div class="w-10 h-10 rounded-lg bg-priority-emergency-text text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px] animate-pulse">e911_emergency</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-priority-emergency-text">Manchester: Emergência Imediata</span>
+<span class="px-2 py-0.5 rounded-full bg-priority-emergency-text text-on-primary font-caption text-caption font-bold">Tempo Zero</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-0.5 font-medium">
+            Senha <strong class="text-priority-emergency-text font-bold">E-040 (Jorge Luiz Albuquerque, 58 anos)</strong> aguarda triagem vermelha por <span class="underline decoration-priority-emergency-text decoration-2">Dor torácica aguda irradiada</span>.
+          </p>
+</div>
+</div>
+<button class="relative z-10 px-space-md py-space-xs rounded-lg bg-priority-emergency-text text-on-primary font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-1.5 shadow-md flex-shrink-0" onclick="chamarSenha('E-040', 'Jorge Luiz Albuquerque', '58 anos', 'Dor torácica aguda', 'Emergência (Vermelho)')">
+<span class="material-symbols-outlined text-[18px]">notification_important</span>
+        Interromper e Atender
+      </button>
+</div>
+</div>
+<!-- Main Dual-Panel Workspace -->
+<div class="max-w-7xl mx-auto px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-2xl">
+<!-- Left / Top Column: Active Ticket Hero Panel (Doctor Cockpit) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Current Called Patient Hero Card -->
+<div class="bg-surface-pure rounded-xl p-space-lg shadow-md relative overflow-hidden">
+<!-- Status indicator bar -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-secondary"></div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-secondary">
+              Senha em Atendimento Agora • Consultório 04
+            </span>
+</div>
+<!-- Live Timer -->
+<div class="flex items-center gap-space-xs px-space-md py-1 bg-surface-container rounded-full text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary">timer</span>
+<span class="font-caption text-caption text-text-muted">Tempo em consulta:</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight" id="consultation-timer">08:42</span>
+</div>
+</div>
+<!-- Big Ticket & Patient Focus Presentation -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-lg items-center py-space-md">
+<!-- Ticket Code Display with Clinical High Contrast -->
+<div class="md:col-span-5 flex flex-col items-center md:items-start justify-center p-space-md rounded-xl bg-surface-container-low text-center md:text-left">
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted font-bold">Código da Senha</span>
+<div class="font-display-ticket text-display-ticket text-primary tracking-tighter leading-none my-space-2xs" id="active-ticket-badge">
+              P-084
+            </div>
+<div class="flex items-center gap-space-xs mt-space-2xs">
+<span class="px-space-sm py-0.5 rounded-full bg-priority-urgency-bg text-priority-urgency-text font-label-sm text-label-sm font-bold uppercase">
+                Urgência (Amarelo)
+              </span>
+<span class="font-caption text-caption text-text-muted">Triado às 14:18</span>
+</div>
+</div>
+<!-- Patient Metadata Details -->
+<div class="md:col-span-7 flex flex-col justify-center gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-text-muted uppercase font-bold">Identificação do Paciente</span>
+<span class="font-caption text-caption text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">verified</span> Prontuário Eletrônico #89421
+              </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight" id="active-patient-name">
+              Helena Ribeiro de Castro
+            </h2>
+<div class="flex flex-wrap items-center gap-space-md text-text-secondary font-body-sm text-body-sm py-space-2xs">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-text-muted">cake</span>
+<strong class="text-on-surface">62 anos</strong> (24/09/1962)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-text-muted">female</span>
+                Feminino
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-text-muted">health_and_safety</span>
+                Unimed Nacional
+              </span>
+</div>
+<!-- Complaint snippet -->
+<div class="p-space-sm rounded-lg bg-surface-container font-body-sm text-body-sm text-on-surface flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0">medical_information</span>
+<div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Queixa Clínica: </span>
+<span class="text-text-secondary" id="active-patient-complaint">Picos hipertensivos associados a cefaleia occipital pulsátil e náuseas há 3 horas. PA Aferida: 170x105 mmHg.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action Center -->
+<div class="pt-space-md flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
+<!-- Next & Recall Primary Cluster -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Mega Next Call Button -->
+<button class="h-12 px-space-lg rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs shadow-md active:scale-95 transition-all" id="btn-call-next" onclick="chamarProxima()">
+<span class="material-symbols-outlined text-[22px]">campaign</span>
+<span>Chamar Próxima Senha</span>
+<kbd class="hidden sm:inline-block ml-space-2xs px-1.5 py-0.5 text-[10px] uppercase font-bold bg-on-primary/20 rounded">F2</kbd>
+</button>
+<!-- Recall Sound Button -->
+<button class="h-12 px-space-md rounded-lg bg-priority-standard-bg hover:bg-surface-container text-priority-standard-text font-label-md text-label-md flex items-center justify-center gap-space-xs transition-colors active:scale-95" id="btn-recall" onclick="rechamar()">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+<span>Rechamar no Painel TV</span>
+<kbd class="hidden sm:inline-block ml-space-2xs px-1.5 py-0.5 text-[10px] uppercase font-bold bg-priority-standard-text/15 rounded">F3</kbd>
+</button>
+</div>
+<!-- Finalize & Secondary Actions -->
+<div class="flex items-center gap-space-xs">
+<button class="h-12 px-space-md rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md flex items-center gap-1.5 transition-colors" onclick="finalizarAtendimento()">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+<span>Finalizar Consulta</span>
+<kbd class="hidden sm:inline-block ml-space-2xs px-1.5 py-0.5 text-[10px] uppercase font-bold bg-on-primary/20 rounded">F4</kbd>
+</button>
+<!-- Dropdown Menu / Auxiliary Action -->
+<div class="relative group">
+<button class="h-12 w-12 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[22px]">more_vert</span>
+</button>
+<div class="absolute right-0 bottom-full mb-2 w-56 rounded-xl bg-surface-pure shadow-xl p-1.5 hidden group-hover:flex flex-col gap-1 z-30">
+<button class="w-full text-left px-space-sm py-2 rounded-lg hover:bg-priority-emergency-bg text-priority-emergency-text font-label-sm text-label-sm flex items-center gap-2" onclick="marcarAusente()">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+                  Ausente / Não Compareceu
+                </button>
+<button class="w-full text-left px-space-sm py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">biotech</span>
+                  Transferir para Exames
+                </button>
+<button class="w-full text-left px-space-sm py-2 rounded-lg hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+                  Encaminhar Especialista
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- TV Notification Simulation Toast -->
+<div class="hidden mt-space-md p-space-sm bg-primary text-on-primary rounded-lg items-center justify-between text-label-sm transition-all animate-bounce" id="tv-toast">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]">tv</span>
+<span>Chamada sonora transmitida para o Painel da Sala de Espera Principal e Consultório 04</span>
+</div>
+<span class="material-symbols-outlined text-[18px] cursor-pointer" onclick="document.getElementById('tv-toast').classList.add('hidden')">close</span>
+</div>
+</div>
+<!-- Queue Management Module (Tabs & Table) -->
+<div class="bg-surface-pure rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<!-- Top Toolbar: Tabs and Quick Filters -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
+<button class="queue-tab active px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary font-label-md text-label-md whitespace-nowrap shadow-sm">
+              Fila Geral (<span id="total-queue-count">5</span>)
+            </button>
+<button class="queue-tab px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap">
+              Manchester / Prioridades (3)
+            </button>
+<button class="queue-tab px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap">
+              Retornos (1)
+            </button>
+<button class="queue-tab px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md whitespace-nowrap">
+              Atendidos Hoje (28)
+            </button>
+</div>
+<div class="flex items-center gap-space-xs w-full sm:w-auto">
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-text-muted text-[18px]">search</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-lg bg-surface-soft font-body-sm text-body-sm text-on-surface placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-secondary/30" placeholder="Filtrar por nome ou senha..." type="text"/>
+</div>
+<button class="h-10 w-10 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-text-secondary" title="Atualizar fila">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Patients Waiting Table -->
+<div class="w-full overflow-x-auto rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-muted text-text-secondary font-label-sm text-label-sm">
+<th class="py-space-xs px-space-sm">Senha</th>
+<th class="py-space-xs px-space-sm">Paciente &amp; Idade</th>
+<th class="py-space-xs px-space-sm">Classificação Manchester</th>
+<th class="py-space-xs px-space-sm">Queixa Principal</th>
+<th class="py-space-xs px-space-sm text-center">Espera</th>
+<th class="py-space-xs px-space-sm text-right">Ação</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm" id="queue-table-body">
+<!-- Row 1: Emergency -->
+<tr class="hover:bg-surface-soft transition-colors bg-priority-emergency-bg/20">
+<td class="py-space-sm px-space-sm font-headline-sm text-headline-sm font-bold text-priority-emergency-text">
+                  E-040
+                </td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Jorge Luiz Albuquerque</span>
+<span class="font-caption text-caption text-text-muted">58 anos • Masculino</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="px-space-xs py-0.5 rounded-full bg-priority-emergency-bg text-priority-emergency-text font-label-sm text-label-sm font-bold inline-flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-priority-emergency-text"></span>
+                    Emergência (Vermelho)
+                  </span>
+</td>
+<td class="py-space-sm px-space-sm text-text-secondary max-w-xs truncate">
+                  Dor torácica irradiada p/ MSE + sudorese
+                </td>
+<td class="py-space-sm px-space-sm text-center font-label-sm text-label-sm font-bold text-priority-emergency-text">
+                  03 min
+                </td>
+<td class="py-space-sm px-space-sm text-right">
+<button class="px-space-sm py-1 rounded bg-priority-emergency-text text-on-primary font-label-sm text-label-sm hover:opacity-90 shadow-sm transition-all active:scale-95" onclick="chamarSenha('E-040', 'Jorge Luiz Albuquerque', '58 anos', 'Dor torácica irradiada p/ MSE + sudorese', 'Emergência (Vermelho)')">
+                    Chamar Agora
+                  </button>
+</td>
+</tr>
+<!-- Row 2: Priority Yellow -->
+<tr class="hover:bg-surface-soft transition-colors">
+<td class="py-space-sm px-space-sm font-headline-sm text-headline-sm font-bold text-priority-urgency-text">
+                  P-085
+                </td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Mariana Prado Salles</span>
+<span class="font-caption text-caption text-text-muted">29 anos • Feminino</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="px-space-xs py-0.5 rounded-full bg-priority-urgency-bg text-priority-urgency-text font-label-sm text-label-sm font-bold inline-flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-priority-urgency-text"></span>
+                    Muito Urgente (Laranja)
+                  </span>
+</td>
+<td class="py-space-sm px-space-sm text-text-secondary max-w-xs truncate">
+                  Crise asmática moderada • SatO2 93%
+                </td>
+<td class="py-space-sm px-space-sm text-center font-label-sm text-label-sm text-text-secondary">
+                  12 min
+                </td>
+<td class="py-space-sm px-space-sm text-right">
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-priority-standard-bg text-priority-standard-text font-label-sm text-label-sm transition-colors active:scale-95" onclick="chamarSenha('P-085', 'Mariana Prado Salles', '29 anos', 'Crise asmática moderada • SatO2 93%', 'Muito Urgente (Laranja)')">
+                    Chamar
+                  </button>
+</td>
+</tr>
+<!-- Row 3: Standard Green -->
+<tr class="hover:bg-surface-soft transition-colors">
+<td class="py-space-sm px-space-sm font-headline-sm text-headline-sm font-bold text-priority-standard-text">
+                  A-102
+                </td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Carlos Eduardo Peixoto</span>
+<span class="font-caption text-caption text-text-muted">45 anos • Masculino</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="px-space-xs py-0.5 rounded-full bg-priority-standard-bg text-priority-standard-text font-label-sm text-label-sm font-bold inline-flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-priority-standard-text"></span>
+                    Pouco Urgente (Verde)
+                  </span>
+</td>
+<td class="py-space-sm px-space-sm text-text-secondary max-w-xs truncate">
+                  Febre há 2 dias e tosse produtiva
+                </td>
+<td class="py-space-sm px-space-sm text-center font-label-sm text-label-sm text-text-secondary">
+                  24 min
+                </td>
+<td class="py-space-sm px-space-sm text-right">
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-priority-standard-bg text-priority-standard-text font-label-sm text-label-sm transition-colors active:scale-95" onclick="chamarSenha('A-102', 'Carlos Eduardo Peixoto', '45 anos', 'Febre há 2 dias e tosse produtiva', 'Pouco Urgente (Verde)')">
+                    Chamar
+                  </button>
+</td>
+</tr>
+<!-- Row 4: Standard Green -->
+<tr class="hover:bg-surface-soft transition-colors">
+<td class="py-space-sm px-space-sm font-headline-sm text-headline-sm font-bold text-priority-standard-text">
+                  A-103
+                </td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Beatriz Fernandes Lima</span>
+<span class="font-caption text-caption text-text-muted">34 anos • Feminino</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="px-space-xs py-0.5 rounded-full bg-priority-standard-bg text-priority-standard-text font-label-sm text-label-sm font-bold inline-flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-priority-standard-text"></span>
+                    Pouco Urgente (Verde)
+                  </span>
+</td>
+<td class="py-space-sm px-space-sm text-text-secondary max-w-xs truncate">
+                  Trauma em artelho D • Edema leve
+                </td>
+<td class="py-space-sm px-space-sm text-center font-label-sm text-label-sm text-text-secondary">
+                  31 min
+                </td>
+<td class="py-space-sm px-space-sm text-right">
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-priority-standard-bg text-priority-standard-text font-label-sm text-label-sm transition-colors active:scale-95" onclick="chamarSenha('A-103', 'Beatriz Fernandes Lima', '34 anos', 'Trauma em artelho D • Edema leve', 'Pouco Urgente (Verde)')">
+                    Chamar
+                  </button>
+</td>
+</tr>
+<!-- Row 5: Blue (Non Urgent) -->
+<tr class="hover:bg-surface-soft transition-colors">
+<td class="py-space-sm px-space-sm font-headline-sm text-headline-sm font-bold text-text-secondary">
+                  N-019
+                </td>
+<td class="py-space-sm px-space-sm">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Antônio Fagundes Neves</span>
+<span class="font-caption text-caption text-text-muted">71 anos • Masculino</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container text-text-secondary font-label-sm text-label-sm font-bold inline-flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+                    Não Urgente (Azul)
+                  </span>
+</td>
+<td class="py-space-sm px-space-sm text-text-secondary max-w-xs truncate">
+                  Troca de receita médica de uso contínuo
+                </td>
+<td class="py-space-sm px-space-sm text-center font-label-sm text-label-sm text-text-secondary">
+                  48 min
+                </td>
+<td class="py-space-sm px-space-sm text-right">
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-priority-standard-bg text-priority-standard-text font-label-sm text-label-sm transition-colors active:scale-95" onclick="chamarSenha('N-019', 'Antônio Fagundes Neves', '71 anos', 'Troca de receita médica de uso contínuo', 'Não Urgente (Azul)')">
+                    Chamar
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Queue Status Bar -->
+<div class="flex items-center justify-between pt-space-xs text-text-muted font-caption text-caption">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-priority-standard-text"></span>
+<span>Sincronizado com totem e recepção em tempo real via WebSocket</span>
+</div>
+<span>Exibindo 5 de 14 pacientes na fila geral</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Operational Metrics, Clinical Productivity & Shortcuts -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Shift Performance Widget -->
+<div class="bg-surface-pure rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">analytics</span>
+            Resumo do Plantão
+          </h3>
+<span class="font-caption text-caption text-text-muted bg-surface-soft px-2 py-1 rounded">Turno: 07h - 19h</span>
+</div>
+<!-- Key Metrics Cards -->
+<div class="grid grid-cols-3 gap-space-xs py-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-soft flex flex-col items-center text-center">
+<span class="font-headline-md text-headline-md text-primary font-bold">18</span>
+<span class="font-caption text-caption text-text-muted mt-1 leading-tight">Atendidos</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-soft flex flex-col items-center text-center">
+<span class="font-headline-md text-headline-md text-secondary font-bold">11m</span>
+<span class="font-caption text-caption text-text-muted mt-1 leading-tight">Tempo Médio</span>
+</div>
+<div class="p-space-sm rounded-lg bg-priority-urgency-bg/50 flex flex-col items-center text-center">
+<span class="font-headline-md text-headline-md text-priority-urgency-text font-bold">05</span>
+<span class="font-caption text-caption text-text-muted mt-1 leading-tight">Em Espera</span>
+</div>
+</div>
+<!-- Shift Progress Bar -->
+<div class="pt-space-sm">
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-1 text-on-surface">
+<span>Meta de Atendimentos do Bloco</span>
+<span class="font-bold text-primary">72% (18/25)</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 72%;"></div>
+</div>
+</div>
+<!-- Inline SVG Mini Productivity Chart -->
+<div class="mt-space-md pt-space-sm flex flex-col gap-1">
+<span class="font-caption text-caption uppercase text-text-muted font-bold">Volume por Hora (Hoje)</span>
+<div class="h-20 w-full flex items-end justify-between gap-1.5 pt-2">
+<!-- Hour 08h -->
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t hover:bg-secondary transition-all" style="height: 35px;"></div>
+<span class="text-[10px] text-text-muted font-bold">08h</span>
+</div>
+<!-- Hour 09h -->
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t hover:bg-secondary transition-all" style="height: 55px;"></div>
+<span class="text-[10px] text-text-muted font-bold">09h</span>
+</div>
+<!-- Hour 10h -->
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t hover:bg-secondary transition-all" style="height: 48px;"></div>
+<span class="text-[10px] text-text-muted font-bold">10h</span>
+</div>
+<!-- Hour 11h -->
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t hover:bg-secondary transition-all" style="height: 60px;"></div>
+<span class="text-[10px] text-text-muted font-bold">11h</span>
+</div>
+<!-- Hour 12h (lunch dip) -->
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t hover:bg-secondary transition-all" style="height: 20px;"></div>
+<span class="text-[10px] text-text-muted font-bold">12h</span>
+</div>
+<!-- Hour 13h -->
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-surface-container-high rounded-t hover:bg-secondary transition-all" style="height: 42px;"></div>
+<span class="text-[10px] text-text-muted font-bold">13h</span>
+</div>
+<!-- Hour 14h (current) -->
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="w-full bg-secondary rounded-t shadow" style="height: 50px;"></div>
+<span class="text-[10px] text-secondary font-bold">14h</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Room Switch & Doctor Notes -->
+<div class="bg-surface-pure rounded-xl p-space-md shadow-sm">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-space-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">door_front</span>
+          Informações do Consultório
+        </h4>
+<div class="space-y-space-xs text-body-sm text-body-sm">
+<div class="flex items-center justify-between py-1.5 px-space-xs rounded bg-surface-soft">
+<span class="text-text-muted">Painel Conectado:</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">TV Sala de Espera A • IP .124</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-space-xs rounded bg-surface-soft">
+<span class="text-text-muted">Impressora de Receituário:</span>
+<span class="font-label-sm text-label-sm text-priority-standard-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Online
+            </span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-space-xs rounded bg-surface-soft">
+<span class="text-text-muted">Enfermeiro de Apoio:</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Juliana Mendes (Ramal 412)</span>
+</div>
+</div>
+</div>
+<!-- Doctor Rapid Keyboard Shortcuts Helper -->
+<div class="bg-surface-container-low rounded-xl p-space-md">
+<div class="flex items-center gap-space-xs mb-space-sm text-primary">
+<span class="material-symbols-outlined text-[20px]">keyboard</span>
+<span class="font-label-md text-label-md font-bold">Atalhos Rápidos de Teclado</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="p-space-xs rounded bg-surface-pure shadow-xs flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary">Chamar Próximo</span>
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high font-mono text-[11px] font-bold text-on-surface">F2</kbd>
+</div>
+<div class="p-space-xs rounded bg-surface-pure shadow-xs flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary">Rechamar Senha</span>
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high font-mono text-[11px] font-bold text-on-surface">F3</kbd>
+</div>
+<div class="p-space-xs rounded bg-surface-pure shadow-xs flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary">Concluir Consulta</span>
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high font-mono text-[11px] font-bold text-on-surface">F4</kbd>
+</div>
+<div class="p-space-xs rounded bg-surface-pure shadow-xs flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary">Central de Ajuda</span>
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container-high font-mono text-[11px] font-bold text-on-surface">F1</kbd>
+</div>
+</div>
+</div>
+<!-- Quick Audio Announcement Test Card -->
+<div class="rounded-xl bg-surface-pure p-space-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">record_voice_over</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Sintetizador de Voz PT-BR</span>
+<span class="font-caption text-caption text-text-muted">Voz feminina calma (Padrão)</span>
+</div>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high font-label-sm text-label-sm text-on-surface transition-colors flex items-center gap-1" onclick="testarVoz()">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span> Testar
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let timerSeconds = 522;
+  const timerElement = document.getElementById('consultation-timer');
+  
+  // Timer loop
+  setInterval(() => {
+    timerSeconds++;
+    const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const secs = (timerSeconds % 60).toString().padStart(2, '0');
+    if (timerElement) {
+      timerElement.textContent = `${mins}:${secs}`;
+    }
+  }, 1000);
+
+  // Play chimes and visual TV toast
+  function rechamar() {
+    const toast = document.getElementById('tv-toast');
+    if (toast) {
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 5000);
+    }
+
+    // Audio chime simulation
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.setValueAtTime(880, ctx.currentTime + 0.15); // A5
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.6);
+    } catch(e) {}
+  }
+
+  function chamarSenha(ticket, name, age, complaint, priority) {
+    document.getElementById('active-ticket-badge').textContent = ticket;
+    document.getElementById('active-patient-name').textContent = name;
+    document.getElementById('active-patient-complaint').textContent = complaint;
+    timerSeconds = 0;
+    rechamar();
+  }
+
+  function chamarProxima() {
+    // Call next in list
+    chamarSenha('E-040', 'Jorge Luiz Albuquerque', '58 anos', 'Dor torácica aguda irradiada p/ MSE + sudorese', 'Emergência (Vermelho)');
+  }
+
+  function finalizarAtendimento() {
+    alert('Atendimento da senha ' + document.getElementById('active-ticket-badge').textContent + ' finalizado com sucesso no prontuário eletrônico!');
+    chamarProxima();
+  }
+
+  function marcarAusente() {
+    if (confirm('Marcar paciente como ausente e chamar a próxima senha?')) {
+      chamarProxima();
+    }
+  }
+
+  function testarVoz() {
+    rechamar();
+  }
+
+  // Keyboard shortcut listener
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'F2') {
+      e.preventDefault();
+      chamarProxima();
+    } else if (e.key === 'F3') {
+      e.preventDefault();
+      rechamar();
+    } else if (e.key === 'F4') {
+      e.preventDefault();
+      finalizarAtendimento();
+    }
+  });
+</script></main><footer class="w-full bg-surface-pure shadow-[0_-1px_8px_rgba(0,0,0,0.03)] py-space-lg mt-auto"><div class="max-w-7xl mx-auto px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px]">local_hospital</span><div class="flex flex-col"><span class="font-label-sm text-label-sm font-bold text-on-surface">Unidade Central de Pronto Atendimento - Quickmed</span><span class="font-caption text-caption text-text-muted">Setor de Urgência, Emergência e Ambulatório Integrado</span></div></div><div class="flex flex-wrap items-center justify-center gap-space-lg text-center"><div class="flex items-center gap-space-2xs"><span class="material-symbols-outlined text-secondary text-[18px]">vital_signs</span><span class="font-caption text-caption text-text-muted">Protocolo Manchester Ativo</span></div><div class="flex items-center gap-space-2xs"><span class="material-symbols-outlined text-secondary text-[18px]">headset_mic</span><span class="font-caption text-caption text-text-muted">Suporte Clínico: Ramal 204</span></div></div><div class="font-caption text-caption text-text-muted text-center md:text-right">© 2024 Quickmed Hospitalar. Todos os direitos reservados.</div></div></footer></body></html>

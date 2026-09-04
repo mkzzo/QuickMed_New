@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Quickmed - Totem de Autoatendimento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#91d78a",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#c0c9bb",
+            "on-primary-container": "#90d689",
+            "on-tertiary-fixed": "#131e17",
+            "inverse-primary": "#91d78a",
+            "inverse-on-surface": "#e8f3ee",
+            "on-surface": "#141e1b",
+            "priority-emergency-bg": "#FFEBEE",
+            "surface-container": "#e5f0eb",
+            "outline": "#717a6d",
+            "on-tertiary-container": "#bcc9be",
+            "surface-variant": "#dae5e0",
+            "primary": "#00450d",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#d9e6da",
+            "tertiary-container": "#49554c",
+            "primary-fixed": "#acf4a4",
+            "on-secondary-fixed-variant": "#005312",
+            "surface-soft": "#F8FAF9",
+            "background": "#f1fcf7",
+            "text-secondary": "#4A5568",
+            "surface-tint": "#2a6b2c",
+            "priority-standard-text": "#2E7D32",
+            "surface-container-high": "#dfebe6",
+            "secondary-fixed": "#a3f69c",
+            "on-surface-variant": "#41493e",
+            "on-error": "#ffffff",
+            "surface": "#f1fcf7",
+            "on-secondary-container": "#217128",
+            "secondary": "#1b6d24",
+            "error-container": "#ffdad6",
+            "surface-container-highest": "#dae5e0",
+            "primary-container": "#1b5e20",
+            "on-background": "#141e1b",
+            "priority-standard-bg": "#E8F5E9",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#28332f",
+            "on-primary-fixed": "#002203",
+            "on-primary-fixed-variant": "#0c5216",
+            "on-secondary-fixed": "#002204",
+            "priority-emergency-text": "#C62828",
+            "tertiary-fixed-dim": "#bdcabe",
+            "surface-pure": "#FFFFFF",
+            "surface-container-low": "#ebf6f1",
+            "border-subtle": "#E2E8E5",
+            "surface-dim": "#d1ddd8",
+            "secondary-container": "#a0f399",
+            "priority-urgency-bg": "#FFF8E1",
+            "text-muted": "#7D8A85",
+            "surface-bright": "#f1fcf7",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed-variant": "#3e4a41",
+            "secondary-fixed-dim": "#88d982",
+            "border-input": "#D1DBD5",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#323e36",
+            "surface-muted": "#F1F5F2",
+            "priority-urgency-text": "#F57F17",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-3xl": "4rem",
+            "space-2xl": "3rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.5rem",
+            "margin-desktop": "2rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.75rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "1rem",
+            "gutter-desktop": "1.5rem",
+            "space-2xs": "0.25rem"
+          },
+          "fontFamily": {
+            "display-room": ["lexend"],
+            "headline-sm": ["lexend"],
+            "display-room-mobile": ["lexend"],
+            "body-lg": ["manrope"],
+            "display-ticket": ["lexend"],
+            "label-lg": ["manrope"],
+            "headline-md": ["lexend"],
+            "display-ticket-mobile": ["lexend"],
+            "body-md": ["manrope"],
+            "body-sm": ["manrope"],
+            "label-sm": ["manrope"],
+            "label-md": ["manrope"],
+            "headline-lg": ["lexend"],
+            "caption": ["manrope"]
+          },
+          "fontSize": {
+            "display-room": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display-room-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "display-ticket": ["96px", { "lineHeight": "104px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "display-ticket-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "caption": ["11px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface select-none">
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div class="h-20 w-full px-gutter-desktop flex items-center justify-between">
+      <div class="flex items-center gap-space-md">
+        <img alt="Quickmed Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U1vB_VDt4md2own32BMJS9DEW4-hICVkTuphdNKFnxUaqc9GUfY2HKFsgSaiQ7MBbGIuhOm9b-OxuQuLxTDMu2Kv6eFvzEjuAGdGssQKZpF5zcDYhPE_dgktKQY4R9Nqv6UHLMU843O4ksVcvjd47U9jaK7d4k5-xrcl2K4jqBXJjNnpnyRXc1tUIJiPWWFdnZwJeokQRanOtp3KvtWQxfo0pv03K8ji5WBiIUALqzBgK0QTQ2I9yDl0M"/>
+        <div class="flex flex-col">
+          <span class="font-headline-md text-headline-md text-primary tracking-tight">Quickmed</span>
+          <span class="font-caption text-caption text-text-muted uppercase tracking-wider">Autoatendimento Hospitalar</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-space-lg">
+        <nav class="flex items-center gap-space-md">
+          <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" href="../painel_de_chamadas_quickmed/code.html">Painel TV</a>
+          <a class="bg-primary-container text-on-primary font-bold rounded-lg px-space-sm py-space-2xs text-label-md" href="#">Tirar Senha</a>
+          <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" href="../triagem_da_enfermagem_protocolo_manchester_quickmed/code.html">Triagem</a>
+          <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" href="../vis_o_do_m_dico_chamador_de_senhas_quickmed/code.html">Consultórios</a>
+        </nav>
+        
+        <div class="h-8 w-px bg-border-subtle"></div>
+        
+        <div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-2xs rounded-lg">
+          <button aria-label="Acessibilidade em Libras" class="p-space-xs rounded text-secondary hover:bg-secondary-container hover:text-on-secondary-container transition-colors" type="button">
+            <span class="material-symbols-outlined text-[24px]">sign_language</span>
+          </button>
+          <button aria-label="Modo Alto Contraste" class="p-space-xs rounded text-secondary hover:bg-secondary-container hover:text-on-secondary-container transition-colors" id="btn-contrast-header" type="button">
+            <span class="material-symbols-outlined text-[24px]">contrast</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-space-xs pl-space-xs">
+          <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+          <span class="font-headline-sm text-headline-sm text-primary" id="totem-clock">14:32</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface min-h-[calc(100vh-5rem)] pb-24">
+    <div class="flex flex-col w-full px-gutter-desktop max-w-7xl mx-auto py-space-md gap-space-lg">
+      
+      <!-- Bloco de Acolhimento -->
+      <section class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-pure rounded-xl p-space-lg shadow-sm">
+        <div class="flex flex-col gap-space-2xs">
+          <div class="inline-flex items-center gap-space-xs text-secondary font-label-md">
+            <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+            <span>Totem 01 • Entrada Principal Aberta 24h</span>
+          </div>
+          <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+            Bem-vindo ao Quickmed Pronto Atendimento
+          </h1>
+          <p class="font-body-md text-body-md text-text-secondary">
+            Selecione o serviço desejado na tela para retirar sua senha de atendimento.
+          </p>
+        </div>
+        
+        <div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-xs rounded-xl">
+          <button class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-pure text-on-surface hover:bg-surface-container font-label-md transition-all shadow-sm" id="btn-contrast" type="button">
+            <span class="material-symbols-outlined text-[20px] text-secondary">contrast</span>
+            <span>Alto Contraste</span>
+          </button>
+          <button class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-pure text-on-surface hover:bg-surface-container font-label-md transition-all shadow-sm" id="btn-text-size" type="button">
+            <span class="material-symbols-outlined text-[20px] text-secondary">format_size</span>
+            <span>Texto A+</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Banner de Emergência Crítica: Manchester Vermelho -->
+      <section class="bg-priority-emergency-bg rounded-xl p-space-md shadow-sm border border-red-200">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+          <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-xl bg-error text-on-error flex items-center justify-center flex-shrink-0 animate-pulse">
+              <span class="material-symbols-outlined text-[32px]">emergency</span>
+            </div>
+            <div>
+              <span class="font-label-sm uppercase tracking-wider text-priority-emergency-text bg-error-container/40 px-space-xs py-space-2xs rounded font-bold">
+                Protocolo Manchester Vermelho
+              </span>
+              <h2 class="font-headline-sm text-headline-sm text-priority-emergency-text font-bold">
+                Dor forte no peito, falta de ar severa, convulsão ou desmaio?
+              </h2>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">
+                Não pegue fila comum. Toque neste botão para acionar a equipe de emergência e triagem imediatamente.
+              </p>
+            </div>
+          </div>
+          <button class="w-full md:w-auto px-space-xl py-space-md bg-error text-on-error rounded-xl font-label-lg font-bold flex items-center justify-center gap-space-xs hover:bg-on-error-container transition-all shadow-md active:scale-95" onclick="acionarEmergenciaImediata()" type="button">
+            <span class="material-symbols-outlined text-[24px]">crisis_alert</span>
+            <span>ATENDIMENTO EMERGENCIAL IMEDIATO</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Grade de Cartões de Atendimento -->
+      <section class="flex flex-col gap-space-sm">
+        <div class="flex items-center justify-between">
+          <h3 class="font-headline-md text-headline-md text-on-surface">
+            Escolha o Atendimento Desejado
+          </h3>
+          <span class="font-label-md text-text-muted">Toque no cartão para emitir sua senha</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+          <!-- 1. Clínico Geral Adulto -->
+          <button class="group text-left bg-surface-pure p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden active:scale-[0.98]" onclick="abrirModalPrioridade('CLINICO_ADULTO', 'Pronto Atendimento Adulto', 3)" type="button">
+            <div class="absolute top-0 left-0 w-2 h-full bg-primary-container"></div>
+            <div class="flex items-start justify-between w-full pl-space-xs">
+              <div class="w-14 h-14 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[34px]">stethoscope</span>
+              </div>
+              <span class="inline-flex items-center gap-1 font-label-sm text-priority-standard-text bg-priority-standard-bg px-space-xs py-space-2xs rounded-full">
+                <span class="material-symbols-outlined text-[16px]">avg_time</span> ~12 min
+              </span>
+            </div>
+            <div class="pl-space-xs mt-space-sm">
+              <h4 class="font-headline-sm text-headline-sm text-primary font-bold group-hover:text-secondary transition-colors">
+                Pronto Atendimento Clínico Adulto
+              </h4>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-space-2xs">
+                Mal-estar geral, dores repentinas, febre, pressão alterada ou sintomas agudos.
+              </p>
+            </div>
+            <div class="pl-space-xs mt-space-md flex items-center text-secondary font-label-md font-bold">
+              <span>Emitir Senha Adulto</span>
+              <span class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </button>
+
+          <!-- 2. Pediatria -->
+          <button class="group text-left bg-surface-pure p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden active:scale-[0.98]" onclick="abrirModalPrioridade('PEDIATRICO', 'Pronto Atendimento Pediátrico', 3)" type="button">
+            <div class="absolute top-0 left-0 w-2 h-full bg-secondary"></div>
+            <div class="flex items-start justify-between w-full pl-space-xs">
+              <div class="w-14 h-14 rounded-xl bg-surface-container-high text-secondary flex items-center justify-center group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[34px]">child_care</span>
+              </div>
+              <span class="inline-flex items-center gap-1 font-label-sm text-secondary bg-surface-container-low px-space-xs py-space-2xs rounded-full">
+                Ala Pediátrica • 2º Andar
+              </span>
+            </div>
+            <div class="pl-space-xs mt-space-sm">
+              <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-secondary transition-colors">
+                Atendimento Pediátrico
+              </h4>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-space-2xs">
+                Bebês, crianças e adolescentes de 0 a 14 anos com suporte especializado.
+              </p>
+            </div>
+            <div class="pl-space-xs mt-space-md flex items-center text-secondary font-label-md font-bold">
+              <span>Emitir Senha Pediatria</span>
+              <span class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </button>
+
+          <!-- 3. Ortopedia -->
+          <button class="group text-left bg-surface-pure p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden active:scale-[0.98]" onclick="abrirModalPrioridade('ORTOPEDIA', 'Ortopedia e Traumatologia', 3)" type="button">
+            <div class="absolute top-0 left-0 w-2 h-full bg-outline"></div>
+            <div class="flex items-start justify-between w-full pl-space-xs">
+              <div class="w-14 h-14 rounded-xl bg-surface-container text-on-surface flex items-center justify-center group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[34px]">format_h4</span>
+              </div>
+              <span class="inline-flex items-center gap-1 font-label-sm text-text-secondary bg-surface-container-low px-space-xs py-space-2xs rounded-full">
+                Raio-X Integrado
+              </span>
+            </div>
+            <div class="pl-space-xs mt-space-sm">
+              <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-secondary transition-colors">
+                Ortopedia &amp; Traumatologia
+              </h4>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-space-2xs">
+                Fraturas suspeitas, quedas, entorses, torções articulares e contusões.
+              </p>
+            </div>
+            <div class="pl-space-xs mt-space-md flex items-center text-secondary font-label-md font-bold">
+              <span>Emitir Senha Ortopedia</span>
+              <span class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </button>
+
+          <!-- 4. Check-in de Consultas -->
+          <button class="group text-left bg-surface-pure p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden active:scale-[0.98]" onclick="abrirTecladoCPF('CHECKIN_AGENDADO')" type="button">
+            <div class="absolute top-0 left-0 w-2 h-full bg-surface-tint"></div>
+            <div class="flex items-start justify-between w-full pl-space-xs">
+              <div class="w-14 h-14 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[34px]">event_available</span>
+              </div>
+              <span class="inline-flex items-center gap-1 font-label-sm text-priority-standard-text bg-priority-standard-bg px-space-xs py-space-2xs rounded-full">
+                Rápido • Sem Fila
+              </span>
+            </div>
+            <div class="pl-space-xs mt-space-sm">
+              <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-secondary transition-colors">
+                Check-in de Consultas &amp; Exames
+              </h4>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-space-2xs">
+                Já possui agendamento confirmado para hoje? Digite seu CPF para confirmar presença.
+              </p>
+            </div>
+            <div class="pl-space-xs mt-space-md flex items-center text-secondary font-label-md font-bold">
+              <span>Confirmar Presença</span>
+              <span class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </button>
+
+          <!-- 5. Farmácia -->
+          <button class="group text-left bg-surface-pure p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden active:scale-[0.98]" onclick="abrirModalPrioridade('FARMACIA', 'Farmácia e Dispensação', 4)" type="button">
+            <div class="absolute top-0 left-0 w-2 h-full bg-tertiary"></div>
+            <div class="flex items-start justify-between w-full pl-space-xs">
+              <div class="w-14 h-14 rounded-xl bg-surface-container-high text-tertiary flex items-center justify-center group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[34px]">medication</span>
+              </div>
+              <span class="inline-flex items-center gap-1 font-label-sm text-text-secondary bg-surface-container-low px-space-xs py-space-2xs rounded-full">
+                Receitas de Alta
+              </span>
+            </div>
+            <div class="pl-space-xs mt-space-sm">
+              <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-secondary transition-colors">
+                Farmácia Hospitalar
+              </h4>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-space-2xs">
+                Dispensação de medicamentos pós-atendimento e orientação farmacêutica.
+              </p>
+            </div>
+            <div class="pl-space-xs mt-space-md flex items-center text-secondary font-label-md font-bold">
+              <span>Emitir Senha Farmácia</span>
+              <span class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </button>
+
+          <!-- 6. Recepção Geral / Informações -->
+          <button class="group text-left bg-surface-pure p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden active:scale-[0.98]" onclick="abrirModalPrioridade('RECEPCAO_GERAL', 'Recepção e Declarações', 5)" type="button">
+            <div class="absolute top-0 left-0 w-2 h-full bg-outline-variant"></div>
+            <div class="flex items-start justify-between w-full pl-space-xs">
+              <div class="w-14 h-14 rounded-xl bg-surface-container text-on-surface-variant flex items-center justify-center group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[34px]">contact_support</span>
+              </div>
+              <span class="inline-flex items-center gap-1 font-label-sm text-text-secondary bg-surface-container-low px-space-xs py-space-2xs rounded-full">
+                Recepção Geral
+              </span>
+            </div>
+            <div class="pl-space-xs mt-space-sm">
+              <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-secondary transition-colors">
+                Declarações &amp; Informações
+              </h4>
+              <p class="font-body-sm text-body-sm text-text-secondary mt-space-2xs">
+                Atestados de comparecimento, prontuários, autorização de visitas e dúvidas.
+              </p>
+            </div>
+            <div class="pl-space-xs mt-space-md flex items-center text-secondary font-label-md font-bold">
+              <span>Atendimento Administrativo</span>
+              <span class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Banner de Prioridades Legais -->
+      <section class="bg-surface-container-high rounded-xl p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="flex items-center gap-space-md">
+          <div class="p-space-xs bg-surface-pure rounded-xl shadow-sm text-secondary flex items-center gap-2">
+            <span class="material-symbols-outlined text-[28px]">elderly</span>
+            <span class="material-symbols-outlined text-[28px]">pregnant_woman</span>
+            <span class="material-symbols-outlined text-[28px]">accessible</span>
+            <span class="material-symbols-outlined text-[28px]">extension</span>
+          </div>
+          <div>
+            <h4 class="font-label-lg text-label-lg text-on-surface font-bold">
+              Atendimento Prioritário Garantido por Lei (14.624 / 10.048)
+            </h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              Pessoas com 60+, gestantes, lactantes, pessoas com deficiência e pessoas com TEA têm atendimento preferencial prioritário.
+            </p>
+          </div>
+        </div>
+        <button class="px-space-lg py-space-sm bg-surface-pure text-primary font-label-md font-bold rounded-xl shadow-sm hover:bg-surface-container transition-all flex-shrink-0" onclick="abrirModalPrioridade('PRIORIDADE_DIRETA', 'Fila Preferencial Geral', 2)" type="button">
+          Solicitar Senha Preferencial
+        </button>
+      </section>
+
+    </div>
+
+    <!-- Modal: Seleção de Prioridade Legal -->
+    <div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/50 backdrop-blur-sm" id="modal-prioridade">
+      <div class="bg-surface-pure rounded-2xl max-w-2xl w-full p-space-xl shadow-2xl flex flex-col gap-space-lg">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="font-label-sm text-secondary uppercase tracking-wider font-bold" id="modal-servico-tag">SERVIÇO</span>
+            <h3 class="font-headline-md text-headline-md text-on-surface mt-1" id="modal-servico-nome">Identificação de Prioridade</h3>
+            <p class="font-body-md text-body-md text-text-secondary mt-1">Você possui direito a atendimento prioritário por lei?</p>
+          </div>
+          <button class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors" onclick="fecharModalPrioridade()" type="button">
+            <span class="material-symbols-outlined text-[24px]">close</span>
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+          <button class="p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container text-left flex flex-col justify-between h-40 transition-all group active:scale-95" onclick="processarEmissao(false)" type="button">
+            <span class="material-symbols-outlined text-secondary text-[32px]">person</span>
+            <div>
+              <span class="font-headline-sm text-headline-sm text-on-surface font-bold block">Atendimento Convencional</span>
+              <span class="font-body-sm text-body-sm text-text-secondary mt-1 block">Fila geral padrão por ordem de chegada</span>
+            </div>
+          </button>
+          
+          <button class="p-space-lg rounded-xl bg-priority-urgency-bg/60 hover:bg-priority-urgency-bg text-left flex flex-col justify-between h-40 transition-all group active:scale-95" onclick="processarEmissao(true)" type="button">
+            <div class="flex items-center gap-1 text-priority-urgency-text">
+              <span class="material-symbols-outlined text-[28px]">elderly</span>
+              <span class="material-symbols-outlined text-[28px]">accessible</span>
+              <span class="material-symbols-outlined text-[28px]">pregnant_woman</span>
+            </div>
+            <div>
+              <span class="font-headline-sm text-headline-sm text-priority-urgency-text font-bold block">Atendimento Preferencial</span>
+              <span class="font-body-sm text-body-sm text-text-secondary mt-1 block">Idosos (60+), PCD, Gestantes e Autismo (TEA)</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Teclado Numérico para CPF -->
+    <div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/50 backdrop-blur-sm" id="modal-teclado-cpf">
+      <div class="bg-surface-pure rounded-2xl max-w-lg w-full p-space-xl shadow-2xl flex flex-col gap-space-md">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Digite seu CPF</h3>
+            <p class="font-body-sm text-body-sm text-text-secondary">Para registrar seu atendimento ou agendamento</p>
+          </div>
+          <button class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors" onclick="fecharTecladoCPF()" type="button">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+        
+        <div class="bg-surface-container-lowest p-space-md rounded-xl text-center shadow-inner">
+          <div class="font-headline-lg text-headline-lg tracking-widest text-primary font-bold" id="cpf-display">
+            ___ . ___ . ___ - __
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-space-xs">
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('1')" type="button">1</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('2')" type="button">2</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('3')" type="button">3</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('4')" type="button">4</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('5')" type="button">5</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('6')" type="button">6</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('7')" type="button">7</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('8')" type="button">8</button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('9')" type="button">9</button>
+          <button class="h-16 rounded-xl bg-error-container text-error active:scale-95 font-label-md font-bold flex items-center justify-center transition-all" onclick="apagarNumero()" type="button">
+            <span class="material-symbols-outlined text-[24px]">backspace</span>
+          </button>
+          <button class="h-16 rounded-xl bg-surface-container-low hover:bg-surface-container active:scale-95 text-on-surface font-headline-sm text-headline-sm font-bold transition-all" onclick="digitarNumero('0')" type="button">0</button>
+          <button class="h-16 rounded-xl bg-surface-container hover:bg-surface-variant active:scale-95 text-on-surface-variant font-label-md font-bold transition-all" onclick="limparNumero()" type="button">Limpar</button>
+        </div>
+
+        <div class="flex gap-space-sm pt-space-xs">
+          <button class="w-1/3 py-space-md rounded-xl bg-surface-container text-on-surface font-label-md font-bold" onclick="fecharTecladoCPF()" type="button">Cancelar</button>
+          <button class="w-2/3 py-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md font-bold shadow-md transition-all" onclick="confirmarCPF()" type="button">
+            Confirmar e Emitir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Saída: Comprovante de Senha Impresso -->
+    <div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/60 backdrop-blur-sm" id="modal-ticket-impresso">
+      <div class="bg-surface-pure rounded-2xl max-w-md w-full p-space-xl shadow-2xl flex flex-col items-center text-center gap-space-md animate-in fade-in zoom-in-95">
+        <div class="w-16 h-16 rounded-full bg-priority-standard-bg text-secondary flex items-center justify-center">
+          <span class="material-symbols-outlined text-[40px]">check_circle</span>
+        </div>
+        <div>
+          <span class="font-label-sm uppercase tracking-wider text-secondary font-bold">Senha Emitida com Sucesso</span>
+          <h3 class="font-display-ticket text-display-ticket text-primary tracking-tighter" id="ticket-numero">
+            ---
+          </h3>
+          <p class="font-headline-sm text-headline-sm text-on-surface font-bold" id="ticket-servico">
+            Atendimento
+          </p>
+        </div>
+
+        <div class="bg-surface-container-low p-space-md rounded-xl w-full flex items-center gap-space-md text-left">
+          <svg class="w-16 h-16 text-primary flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <rect height="6" rx="1" width="6" x="3" y="3"></rect>
+            <rect height="6" rx="1" width="6" x="15" y="3"></rect>
+            <rect height="6" rx="1" width="6" x="3" y="15"></rect>
+            <path d="M15 15h2v2h-2zM19 19h2v2h-2zM15 19h2v2h-2zM19 15h2v2h-2z"></path>
+            <circle cx="6" cy="6" fill="currentColor" r="1"></circle>
+            <circle cx="18" cy="6" fill="currentColor" r="1"></circle>
+            <circle cx="6" cy="18" fill="currentColor" r="1"></circle>
+          </svg>
+          <div class="flex flex-col">
+            <span class="font-label-md text-label-md text-on-surface font-bold">Retire seu cupom na bandeja abaixo</span>
+            <span class="font-body-sm text-body-sm text-text-secondary">Acompanhe a chamada pelo painel de TV da recepção.</span>
+          </div>
+        </div>
+
+        <div class="w-full bg-surface-container-lowest p-space-sm rounded-lg flex justify-between items-center text-left">
+          <div>
+            <span class="font-caption text-caption text-text-muted block">Local de Espera:</span>
+            <span class="font-label-md text-label-md text-on-surface font-semibold" id="ticket-local">Recepção Principal</span>
+          </div>
+          <div class="text-right">
+            <span class="font-caption text-caption text-text-muted block">Pessoas na Frente:</span>
+            <span class="font-label-md text-label-md text-secondary font-bold" id="ticket-tempo">0</span>
+          </div>
+        </div>
+
+        <button class="w-full py-space-md rounded-xl bg-primary-container text-on-primary font-label-lg font-bold hover:bg-primary transition-all shadow-md mt-space-xs active:scale-95" onclick="concluirAtendimento()" type="button">
+          Concluir (Retornar ao Início)
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="fixed bottom-0 w-full z-40 bg-surface-pure/95 backdrop-blur-md shadow-[0_-2px_12px_rgba(0,0,0,0.04)]">
+    <div class="h-20 w-full px-gutter-desktop flex items-center justify-between">
+      <div class="flex items-center gap-space-xl">
+        <div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-xs rounded-xl shadow-sm">
+          <span class="material-symbols-outlined text-secondary text-[28px]">touch_app</span>
+          <div class="flex flex-col">
+            <span class="font-label-md text-label-md text-on-surface font-semibold">Totem Touchscreen</span>
+            <span class="font-caption text-caption text-text-muted">Toque diretamente na tela</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-space-lg">
+        <div class="flex items-center gap-space-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+          <span class="font-label-sm text-label-sm text-text-secondary">Totem 01 • Conectado à Central</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOTOR DE PERSISTÊNCIA E SINCRONIZAÇÃO EM TEMPO REAL -->
+  <script>
+    const STORAGE_KEY = 'quickmed_database_state';
+
+    let servicoSelecionado = null;
+    let nomeServico = '';
+    let prioridadePadrao = 3;
+    let cpfDigitado = '';
+
+    function getDB() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) {
+        const initial = {
+          contador: 1,
+          chamadoAtual: null,
+          consultorioAtual: "Consultório 01",
+          filas: { 1: [], 2: [], 3: [], 4: [], 5: [] },
+          historico: []
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+        return initial;
+      }
+      return JSON.parse(raw);
+    }
+
+    function saveDB(db) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+      window.dispatchEvent(new Event('quickmed_update'));
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const el = document.getElementById('totem-clock');
+      if (el) el.innerText = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function abrirModalPrioridade(servico, nome, prio) {
+      servicoSelecionado = servico;
+      nomeServico = nome;
+      prioridadePadrao = prio;
+      document.getElementById('modal-servico-tag').innerText = servico;
+      document.getElementById('modal-servico-nome').innerText = nome;
+      document.getElementById('modal-prioridade').classList.remove('hidden');
+    }
+
+    function fecharModalPrioridade() {
+      document.getElementById('modal-prioridade').classList.add('hidden');
+    }
+
+    function processarEmissao(isPreferencial) {
+      fecharModalPrioridade();
+      const prioFinal = isPreferencial ? 2 : prioridadePadrao; // Preferencial cai em Prioridade 2 (Muito Urgente / Preferencial)
+      const nomeCompleto = isPreferencial ? `${nomeServico} (Preferencial)` : nomeServico;
+      
+      emitirSenhaParaFila({
+        nome: nomeCompleto,
+        prioridade: prioFinal,
+        queixa: `Triagem Inicial - ${nomeServico}`
+      });
+    }
+
+    function acionarEmergenciaImediata() {
+      emitirSenhaParaFila({
+        nome: "Paciente Emergência Crítica",
+        prioridade: 1, // Manchester Vermelho (Tempo Zero)
+        queixa: "Dor torácica aguda / Sinais vitais instáveis"
+      });
+    }
+
+    function emitirSenhaParaFila({ nome, prioridade, queixa }) {
+      const db = getDB();
+      const siglas = { 1: 'EM', 2: 'MU', 3: 'UR', 4: 'PU', 5: 'NU' };
+      const codigo = `${siglas[prioridade] || 'UR'}-${String(db.contador).padStart(3, '0')}`;
+      
+      const novoPaciente = {
+        id: db.contador,
+        codigo: codigo,
+        nome: nome || "Paciente Anônimo",
+        cpf: cpfDigitado || "Não informado",
+        prioridade: prioridade,
+        queixa: queixa || "",
+        pressao: "Aguardando triagem",
+        temperatura: 36.5,
+        horaChegada: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+      };
+
+      if (!db.filas[prioridade]) db.filas[prioridade] = [];
+      db.filas[prioridade].push(novoPaciente);
+      db.contador++;
+      saveDB(db);
+
+      // Calcula quantas pessoas estão na frente
+      let naFrente = 0;
+      for (let p = 1; p <= prioridade; p++) {
+        naFrente += (db.filas[p] || []).length;
+      }
+      naFrente = Math.max(0, naFrente - 1);
+
+      // Exibe modal de impressão
+      document.getElementById('ticket-numero').innerText = codigo;
+      document.getElementById('ticket-servico').innerText = nome;
+      document.getElementById('ticket-local').innerText = prioridade === 1 ? "Box de Emergência 01" : "Recepção / Triagem Central";
+      document.getElementById('ticket-tempo').innerText = `${naFrente} pessoa(s)`;
+      document.getElementById('modal-ticket-impresso').classList.remove('hidden');
+    }
+
+    function concluirAtendimento() {
+      document.getElementById('modal-ticket-impresso').classList.add('hidden');
+      cpfDigitado = '';
+      atualizarDisplayCPF();
+    }
+
+    // Teclado Numérico
+    function abrirTecladoCPF(origem) {
+      cpfDigitado = '';
+      atualizarDisplayCPF();
+      document.getElementById('modal-teclado-cpf').classList.remove('hidden');
+    }
+
+    function fecharTecladoCPF() {
+      document.getElementById('modal-teclado-cpf').classList.add('hidden');
+    }
+
+    function digitarNumero(n) {
+      if (cpfDigitado.length < 11) {
+        cpfDigitado += n;
+        atualizarDisplayCPF();
+      }
+    }
+
+    function apagarNumero() {
+      if (cpfDigitado.length > 0) {
+        cpfDigitado = cpfDigitado.slice(0, -1);
+        atualizarDisplayCPF();
+      }
+    }
+
+    function limparNumero() {
+      cpfDigitado = '';
+      atualizarDisplayCPF();
+    }
+
+    function atualizarDisplayCPF() {
+      const d = document.getElementById('cpf-display');
+      if (!d) return;
+      if (cpfDigitado.length === 0) {
+        d.innerText = '___ . ___ . ___ - __';
+        return;
+      }
+      let formatado = '';
+      for (let i = 0; i < 11; i++) {
+        if (i < cpfDigitado.length) {
+          formatado += cpfDigitado[i];
+        } else {
+          formatado += '_';
+        }
+        if (i === 2 || i === 5) formatado += '.';
+        if (i === 8) formatado += '-';
+      }
+      d.innerText = formatado;
+    }
+
+    function confirmarCPF() {
+      fecharTecladoCPF();
+      emitirSenhaParaFila({
+        nome: `Paciente CPF ${cpfDigitado || '---'}`,
+        prioridade: 4,
+        queixa: "Check-in de agendamento validado"
+      });
+    }
+
+    // Acessibilidade
+    const btnContrast = document.getElementById('btn-contrast');
+    let contraste = false;
+    if (btnContrast) {
+      btnContrast.addEventListener('click', () => {
+        contraste = !contraste;
+        document.body.style.filter = contraste ? 'contrast(130%) brightness(95%)' : 'none';
+      });
+    }
+
+    const btnText = document.getElementById('btn-text-size');
+    let zoomTxt = false;
+    if (btnText) {
+      btnText.addEventListener('click', () => {
+        zoomTxt = !zoomTxt;
+        document.body.style.zoom = zoomTxt ? '1.1' : '1.0';
+      });
+    }
+  </script>
+</body>
+</html>

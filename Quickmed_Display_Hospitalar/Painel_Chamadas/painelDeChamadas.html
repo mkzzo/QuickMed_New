@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Quickmed - Painel de Chamadas TV</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <style>
+    @layer base { 
+      html, body { margin: 0; padding: 0; } 
+      body { overscroll-behavior: none; } 
+      main > :first-child { margin-top: 0 !important; } 
+      main > :last-child { margin-bottom: 0 !important; } 
+    } 
+    ::-webkit-scrollbar { display: none; }
+  </style>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = { 
+      darkMode: "class", 
+      theme: { 
+        extend: { 
+          "colors": { 
+            "tertiary": "#323e36", 
+            "error-container": "#ffdad6", 
+            "surface-container": "#e5f0eb", 
+            "on-secondary-fixed": "#002204", 
+            "surface-container-low": "#ebf6f1", 
+            "on-tertiary-fixed": "#131e17", 
+            "tertiary-fixed-dim": "#bdcabe", 
+            "on-primary": "#ffffff", 
+            "on-error": "#ffffff", 
+            "error": "#ba1a1a", 
+            "primary-container": "#1b5e20", 
+            "on-error-container": "#93000a", 
+            "tertiary-container": "#49554c", 
+            "on-primary-container": "#90d689", 
+            "tertiary-fixed": "#d9e6da", 
+            "text-secondary": "#4A5568", 
+            "on-tertiary-container": "#bcc9be", 
+            "priority-emergency-bg": "#FFEBEE", 
+            "on-surface-variant": "#41493e", 
+            "surface": "#f1fcf7", 
+            "surface-container-highest": "#dae5e0", 
+            "surface-bright": "#f1fcf7", 
+            "priority-standard-bg": "#E8F5E9", 
+            "on-secondary": "#ffffff", 
+            "on-background": "#141e1b", 
+            "border-subtle": "#E2E8E5", 
+            "secondary-fixed-dim": "#88d982", 
+            "secondary-fixed": "#a3f69c", 
+            "outline-variant": "#c0c9bb", 
+            "inverse-on-surface": "#e8f3ee", 
+            "surface-container-high": "#dfebe6", 
+            "on-secondary-container": "#217128", 
+            "surface-container-lowest": "#ffffff", 
+            "surface-variant": "#dae5e0", 
+            "priority-standard-text": "#2E7D32", 
+            "primary-fixed-dim": "#91d78a", 
+            "on-surface": "#141e1b", 
+            "on-tertiary": "#ffffff", 
+            "border-input": "#D1DBD5", 
+            "surface-pure": "#FFFFFF", 
+            "priority-emergency-text": "#C62828", 
+            "outline": "#717a6d", 
+            "secondary": "#1b6d24", 
+            "surface-dim": "#d1ddd8", 
+            "priority-urgency-text": "#F57F17", 
+            "priority-urgency-bg": "#FFF8E1", 
+            "primary-fixed": "#acf4a4", 
+            "on-tertiary-fixed-variant": "#3e4a41", 
+            "on-primary-fixed": "#002203", 
+            "secondary-container": "#a0f399", 
+            "text-muted": "#7D8A85", 
+            "on-secondary-fixed-variant": "#005312", 
+            "background": "#f1fcf7", 
+            "surface-soft": "#F8FAF9", 
+            "inverse-primary": "#91d78a", 
+            "inverse-surface": "#28332f", 
+            "surface-tint": "#2a6b2c", 
+            "primary": "#00450d", 
+            "on-primary-fixed-variant": "#0c5216", 
+            "surface-muted": "#F1F5F2" 
+          }, 
+          "borderRadius": { 
+            "DEFAULT": "0.25rem", 
+            "lg": "0.5rem", 
+            "xl": "0.75rem", 
+            "full": "9999px" 
+          }, 
+          "spacing": { 
+            "space-2xs": "0.25rem", 
+            "space-lg": "1.5rem", 
+            "space-sm": "0.75rem", 
+            "margin-mobile": "1rem", 
+            "space-xl": "2rem", 
+            "space-xs": "0.5rem", 
+            "space-md": "1rem", 
+            "space-3xl": "4rem", 
+            "gutter-mobile": "1rem", 
+            "gutter-desktop": "1.5rem", 
+            "margin-desktop": "2rem", 
+            "space-2xl": "3rem" 
+          }, 
+          "fontFamily": { 
+            "body-sm": ["manrope"], 
+            "label-md": ["manrope"], 
+            "headline-lg": ["lexend"], 
+            "body-md": ["manrope"], 
+            "display-room-mobile": ["lexend"], 
+            "display-ticket": ["lexend"], 
+            "display-room": ["lexend"], 
+            "headline-md": ["lexend"], 
+            "body-lg": ["manrope"], 
+            "display-ticket-mobile": ["lexend"], 
+            "label-lg": ["manrope"], 
+            "label-sm": ["manrope"], 
+            "caption": ["manrope"], 
+            "headline-sm": ["lexend"] 
+          }, 
+          "fontSize": { 
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], 
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }], 
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }], 
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], 
+            "display-room-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0", "fontWeight": "600" }], 
+            "display-ticket": ["96px", { "lineHeight": "104px", "letterSpacing": "-0.02em", "fontWeight": "700" }], 
+            "display-room": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.01em", "fontWeight": "600" }], 
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], 
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "500" }], 
+            "display-ticket-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700" }], 
+            "label-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }], 
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], 
+            "caption": ["11px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }], 
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] 
+          } 
+        } 
+      } 
+    };
+  </script>
+</head>
+<body class="bg-surface-soft text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col justify-between">
+  <header class="fixed top-0 w-full z-50 bg-surface-pure/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div class="h-20 max-w-7xl mx-auto px-margin-desktop flex items-center justify-between gap-space-lg">
+      <div class="flex items-center gap-space-md">
+        <img alt="Quickmed Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U1vB_VDt4md2own32BMJS9DEW4-hICVkTuphdNKFnxUaqc9GUfY2HKFsgSaiQ7MBbGIuhOm9b-OxuQuLxTDMu2Kv6eFvzEjuAGdGssQKZpF5zcDYhPE_dgktKQY4R9Nqv6UHLMU843O4ksVcvjd47U9jaK7d4k5-xrcl2K4jqBXJjNnpnyRXc1tUIJiPWWFdnZwJeokQRanOtp3KvtWQxfo0pv03K8ji5WBiIUALqzBgK0QTQ2I9yDl0M"/>
+        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">Quickmed</span>
+        <div class="hidden sm:flex items-center gap-space-xs bg-priority-standard-bg px-space-sm py-space-2xs rounded-full">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-priority-standard-text opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-priority-standard-text"></span>
+          </span>
+          <span class="font-label-sm text-label-sm text-priority-standard-text uppercase tracking-wider font-semibold">Painel de Atendimento em Tempo Real</span>
+        </div>
+      </div>
+      
+      <nav class="hidden md:flex items-center gap-space-md">
+        <a class="bg-primary-container text-on-primary font-bold rounded-lg px-space-sm py-space-xs text-label-md" href="#">Painel TV</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="../triagem_da_enfermagem_protocolo_manchester_quickmed/code.html">Triagem</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="../totem_de_autoatendimento_retirada_de_senha_quickmed/code.html">Totem</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="../vis_o_do_m_dico_chamador_de_senhas_quickmed/code.html">Consultórios</a>
+      </nav>
+
+      <div class="flex items-center gap-space-md">
+        <div class="flex items-center gap-space-sm bg-surface-container-low px-space-sm py-space-2xs rounded-lg">
+          <div class="flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-[20px]">volume_up</span>
+          </div>
+          <div class="flex flex-col text-right">
+            <span class="font-headline-sm text-headline-sm text-primary font-bold leading-none tracking-tight" id="clock-time">--:--</span>
+            <span class="font-caption text-caption text-text-muted leading-tight" id="clock-date">--</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface-soft flex-1">
+    <div class="flex flex-col w-full">
+      <div class="max-w-7xl mx-auto w-full px-margin-mobile md:px-margin-desktop py-space-lg md:py-space-xl flex flex-col gap-space-xl">
+        
+        <!-- Top KPI Bar -->
+        <section class="w-full bg-surface-pure rounded-2xl shadow-sm p-space-md md:p-space-lg flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+          <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">monitor_heart</span>
+            </div>
+            <div>
+              <span class="font-caption text-caption uppercase text-text-muted font-bold tracking-wider">Status Operacional em Tempo Real</span>
+              <h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Pronto Atendimento &amp; Triagem Central</h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm flex-1 lg:max-w-2xl">
+            <div class="bg-surface-soft rounded-xl p-space-sm flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-secondary text-[22px]">hourglass_top</span>
+              <div class="flex flex-col">
+                <span class="font-caption text-caption text-text-muted">Tempo Médio de Espera</span>
+                <span class="font-label-lg text-label-lg text-on-surface font-bold" id="kpi-tempo-espera">~ 12 min</span>
+              </div>
+            </div>
+            <div class="bg-surface-soft rounded-xl p-space-sm flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-secondary text-[22px]">groups</span>
+              <div class="flex flex-col">
+                <span class="font-caption text-caption text-text-muted">Pacientes na Fila</span>
+                <span class="font-label-lg text-label-lg text-on-surface font-bold" id="kpi-pacientes-fila">0 aguardando</span>
+              </div>
+            </div>
+            <div class="bg-surface-soft rounded-xl p-space-sm flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-secondary text-[22px]">stethoscope</span>
+              <div class="flex flex-col">
+                <span class="font-caption text-caption text-text-muted">Total de Chamados</span>
+                <span class="font-label-lg text-label-lg text-on-surface font-bold" id="kpi-total-chamados">0 atendidos</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Monumental Ticket Calling Board -->
+        <section aria-labelledby="chamada-principal-heading" class="w-full">
+          <div class="relative overflow-hidden bg-surface-pure rounded-3xl shadow-xl p-space-lg md:p-space-2xl transition-all duration-300" id="main-callout-container">
+            <div class="absolute -right-24 -top-24 w-96 h-96 bg-primary-container/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-secondary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-space-xl">
+              <!-- Coluna Esquerda: Senha e Paciente -->
+              <div class="flex-1 flex flex-col gap-space-md">
+                <div class="flex flex-wrap items-center gap-space-sm">
+                  <span class="inline-flex items-center gap-space-xs bg-priority-standard-bg text-primary-container px-space-md py-space-2xs rounded-full font-label-md text-label-md">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
+                    </span>
+                    <span class="tracking-wide uppercase">Última Chamada</span>
+                  </span>
+
+                  <!-- Badge Dinâmico de Prioridade -->
+                  <span class="inline-flex items-center gap-space-2xs px-space-md py-space-2xs rounded-full font-label-md text-label-md font-bold" id="main-priority-badge">
+                    <span class="material-symbols-outlined text-[18px]">info</span>
+                    <span id="main-priority-text">Aguardando Chamada</span>
+                  </span>
+
+                  <span class="flex items-center gap-space-2xs font-caption text-caption text-text-muted" id="main-called-time">
+                    <span class="material-symbols-outlined text-[16px]">schedule</span>
+                    --:--
+                  </span>
+                </div>
+
+                <!-- Senha Grande -->
+                <div class="flex flex-col md:flex-row md:items-baseline gap-space-xs md:gap-space-md pt-space-xs">
+                  <span class="font-display-ticket text-display-ticket text-primary tracking-tight font-bold select-all leading-none" id="main-ticket-code">
+                    ---
+                  </span>
+                  <span class="font-label-md text-label-md text-text-muted tracking-wider uppercase font-semibold" id="main-ticket-type">
+                    Aguardando Convocação
+                  </span>
+                </div>
+
+                <!-- Nome do Paciente -->
+                <div class="flex items-center gap-space-sm bg-surface-soft p-space-md rounded-2xl">
+                  <div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+                    <span class="material-symbols-outlined text-[22px]">person</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="font-caption text-caption text-text-muted">Paciente Convocado(a)</span>
+                    <span class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight" id="main-patient-name">
+                      Nenhum paciente chamado no momento
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Coluna Direita: Consultório / Destino -->
+              <div class="lg:w-[420px] flex flex-col gap-space-md bg-surface-container-low p-space-lg rounded-2xl">
+                <div class="flex items-start justify-between">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted font-bold">
+                    Destino Imediato
+                  </span>
+                  <span class="w-8 h-8 rounded-lg bg-surface-pure flex items-center justify-center text-secondary shadow-sm">
+                    <span class="material-symbols-outlined text-[20px]">meeting_room</span>
+                  </span>
+                </div>
+
+                <div class="flex flex-col gap-space-2xs">
+                  <span class="font-display-room text-display-room text-primary font-bold leading-tight" id="main-room-destination">
+                    Sala de Espera
+                  </span>
+                  <div class="flex items-center gap-space-xs text-text-secondary">
+                    <span class="material-symbols-outlined text-secondary text-[20px]">domain</span>
+                    <span class="font-body-lg text-body-lg font-medium text-on-surface" id="main-room-sub">Ala Principal Central</span>
+                  </div>
+                  <p class="font-body-sm text-body-sm text-text-muted mt-space-2xs" id="main-room-instructions">
+                    Por favor, aguarde no saguão até que sua senha seja anunciada no painel sonoro.
+                  </p>
+                </div>
+
+                <!-- Controles de Ação -->
+                <div class="flex flex-col sm:flex-row items-center gap-space-sm pt-space-xs">
+                  <button class="w-full sm:flex-1 h-12 bg-primary hover:bg-primary-container text-on-primary rounded-xl font-label-md text-label-md font-bold flex items-center justify-center gap-space-xs shadow-sm transition-all duration-150 active:scale-[0.98]" id="btn-replay-audio" type="button">
+                    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+                    <span>Tocar Alerta</span>
+                  </button>
+                </div>
+
+                <div class="hidden items-center justify-center gap-space-xs py-space-2xs px-space-sm bg-priority-standard-bg text-priority-standard-text rounded-lg font-caption text-caption font-semibold" id="audio-feedback">
+                  <span class="material-symbols-outlined text-[16px] animate-pulse">campaign</span>
+                  Aviso sonoro transmitido nos alto-falantes
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Histórico dos 3 Últimos Chamados -->
+        <section aria-labelledby="historico-senhas-heading" class="flex flex-col gap-space-md">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[20px]">history</span>
+              </div>
+              <div>
+                <h3 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight" id="historico-senhas-heading">
+                  Últimas Senhas Chamadas
+                </h3>
+                <span class="font-caption text-caption text-text-muted">Registro em tempo real das 3 convocações precedentes</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-space-xs text-text-muted font-caption text-caption">
+              <span class="material-symbols-outlined text-[16px] text-secondary animate-spin">sync</span>
+              Sincronização em tempo real ativa
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md" id="history-grid-cards">
+            <!-- Cards gerados dinamicamente pelo JavaScript -->
+          </div>
+        </section>
+
+        <!-- Acompanhamento Mobile QR Code -->
+        <section aria-labelledby="mobile-track-heading" class="w-full bg-surface-pure rounded-3xl shadow-sm p-space-lg md:p-space-xl overflow-hidden relative">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-space-xl">
+            <div class="flex-1 flex flex-col gap-space-md">
+              <div class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm uppercase tracking-wider font-bold">
+                <span class="material-symbols-outlined text-[18px]">smartphone</span>
+                Comodidade e Mobilidade para Você
+              </div>
+              <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight" id="mobile-track-heading">
+                Acompanhe sua vez no celular
+              </h3>
+              <p class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-2xl">
+                Aponte a câmera do seu smartphone para receber notificações em tempo real, saber quantas pessoas estão na sua frente e ser avisado onde estiver no hospital.
+              </p>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md pt-space-xs">
+                <div class="flex items-start gap-space-sm bg-surface-soft p-space-sm rounded-xl">
+                  <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+                  <div class="flex flex-col">
+                    <span class="font-label-md text-label-md text-on-surface font-semibold">Escaneie</span>
+                    <span class="font-caption text-caption text-text-muted">Aponte a câmera pro código QR ao lado</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-space-sm bg-surface-soft p-space-sm rounded-xl">
+                  <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+                  <div class="flex flex-col">
+                    <span class="font-label-md text-label-md text-on-surface font-semibold">Digite a Senha</span>
+                    <span class="font-caption text-caption text-text-muted">Insira o código do seu comprovante</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-space-sm bg-surface-soft p-space-sm rounded-xl">
+                  <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+                  <div class="flex flex-col">
+                    <span class="font-label-md text-label-md text-on-surface font-semibold">Relaxe</span>
+                    <span class="font-caption text-caption text-text-muted">Aguarde na cafeteria ou jardins</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-space-lg bg-surface-soft p-space-lg rounded-2xl flex-shrink-0 w-full lg:w-auto">
+              <div class="relative bg-surface-pure p-space-sm rounded-2xl shadow-sm flex items-center justify-center">
+                <img alt="QR Code Acompanhamento Mobile" class="w-28 h-28 rounded-xl object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UD8rcyOulOVMI2jnY7PK-DrjqtK2WxajV5bY1x0Jv6kKrZ0KERy99F1s5UC2M73urKKGE4OqInXunE_eCrnSL9ORoq5QGM7ywxMOI5l-rw9_0t1DOpW5Tmv5-o9-2tMR8_-WUYImBA4wqThfIcdHfwdmfwq4f-n6tPvw-yFMU2CHASg_lG9YG2uvBb-K9cyzsCIiYmUfYPRA7aPvoZwa0ZDj4cnfLE8dLPgecauLHU_81VaxIfBwvpnyo"/>
+              </div>
+              <div class="flex flex-col items-center sm:items-start text-center sm:text-left gap-space-xs">
+                <div class="inline-flex items-center gap-space-2xs bg-priority-standard-bg text-priority-standard-text px-space-sm py-space-2xs rounded-full font-label-sm text-label-sm font-bold">
+                  <span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+                  Sem Instalação (Web PWA)
+                </div>
+                <span class="font-label-md text-label-md text-on-surface font-bold">Fila Digital Quickmed</span>
+                <span class="font-caption text-caption text-text-muted max-w-[200px]">Compatível com qualquer smartphone sem precisar baixar app</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full bg-surface-pure shadow-[0_-1px_8px_rgba(0,0,0,0.03)] py-space-lg mt-auto">
+    <div class="max-w-7xl mx-auto px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant">
+      <div class="flex items-center gap-space-sm">
+        <span class="material-symbols-outlined text-primary text-[20px]">local_hospital</span>
+        <div class="flex flex-col">
+          <span class="font-label-sm text-label-sm font-bold text-on-surface">Unidade Central de Pronto Atendimento - Quickmed</span>
+          <span class="font-caption text-caption text-text-muted">Setor de Urgência, Emergência e Ambulatório Integrado</span>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-space-lg text-center">
+        <div class="flex items-center gap-space-2xs">
+          <span class="material-symbols-outlined text-secondary text-[18px]">vital_signs</span>
+          <span class="font-caption text-caption text-text-muted">Protocolo Manchester Ativo</span>
+        </div>
+        <div class="flex items-center gap-space-2xs">
+          <span class="material-symbols-outlined text-secondary text-[18px]">headset_mic</span>
+          <span class="font-caption text-caption text-text-muted">Suporte Clínico: Ramal 204</span>
+        </div>
+      </div>
+      <div class="font-caption text-caption text-text-muted text-center md:text-right">
+        Quickmed Hospitalar • Sistema Integrado
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOTOR DE INTEGRAÇÃO EM JAVASCRIPT / ESTADO COMPARTILHADO -->
+  <script>
+    (function() {
+      const STORAGE_KEY = 'quickmed_database_state';
+      let lastKnownTicket = null;
+
+      // Configurações do Protocolo de Manchester
+      const MANCHESTER_CONFIG = {
+        1: { nome: 'Emergência', bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-500', icon: 'emergency' },
+        2: { nome: 'Muito Urgente', bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-500', icon: 'warning' },
+        3: { nome: 'Urgente', bg: 'bg-amber-100', text: 'text-amber-800', border: 'border-amber-500', icon: 'report_problem' },
+        4: { nome: 'Pouco Urgente', bg: 'bg-emerald-100', text: 'text-emerald-700', border: 'border-emerald-500', icon: 'check_circle' },
+        5: { nome: 'Não Urgente', bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-500', icon: 'info' }
+      };
+
+      // Inicializa o banco local caso não exista
+      function getDatabase() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          const initial = {
+            contador: 1,
+            chamadoAtual: null,
+            consultorioAtual: "Consultório 01",
+            filas: { 1: [], 2: [], 3: [], 4: [], 5: [] },
+            historico: []
+          };
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+          return initial;
+        }
+        return JSON.parse(raw);
+      }
+
+      // Sintetizador Sonoro Hospitalar (Ding-Dong)
+      function playHospitalChime() {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContext) return;
+          const ctx = new AudioContext();
+
+          // Nota 1
+          const osc1 = ctx.createOscillator();
+          const gain1 = ctx.createGain();
+          osc1.type = 'sine';
+          osc1.frequency.setValueAtTime(587.33, ctx.currentTime);
+          osc1.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
+          gain1.gain.setValueAtTime(0.25, ctx.currentTime);
+          gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.7);
+          osc1.connect(gain1);
+          gain1.connect(ctx.destination);
+          osc1.start();
+          osc1.stop(ctx.currentTime + 0.7);
+
+          // Nota 2
+          const osc2 = ctx.createOscillator();
+          const gain2 = ctx.createGain();
+          osc2.type = 'sine';
+          osc2.frequency.setValueAtTime(880, ctx.currentTime + 0.2);
+          osc2.frequency.exponentialRampToValueAtTime(1174.66, ctx.currentTime + 0.35);
+          gain2.gain.setValueAtTime(0.2, ctx.currentTime + 0.2);
+          gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.9);
+          osc2.connect(gain2);
+          gain2.connect(ctx.destination);
+          osc2.start(ctx.currentTime + 0.2);
+          osc2.stop(ctx.currentTime + 0.9);
+
+          // Feedback visual
+          const feedback = document.getElementById('audio-feedback');
+          if (feedback) {
+            feedback.classList.remove('hidden');
+            feedback.classList.add('flex');
+            setTimeout(() => {
+              feedback.classList.add('hidden');
+              feedback.classList.remove('flex');
+            }, 3000);
+          }
+        } catch (e) {
+          console.warn("Áudio não pôde iniciar automaticamente sem interação prévia.");
+        }
+      }
+
+      // Atualiza relógio
+      function updateClock() {
+        const now = new Date();
+        const timeEl = document.getElementById('clock-time');
+        const dateEl = document.getElementById('clock-date');
+        if (timeEl) {
+          timeEl.innerText = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        }
+        if (dateEl) {
+          const options = { day: 'numeric', month: 'short', weekday: 'short' };
+          dateEl.innerText = now.toLocaleDateString('pt-BR', options);
+        }
+      }
+
+      // Renderiza os dados no painel da TV
+      function renderPanel() {
+        const db = getDatabase();
+        
+        // 1. Atualizar KPIs do topo
+        let totalFila = 0;
+        for (let i = 1; i <= 5; i++) {
+          totalFila += (db.filas[i] || []).length;
+        }
+        document.getElementById('kpi-pacientes-fila').innerText = `${totalFila} aguardando`;
+        document.getElementById('kpi-total-chamados').innerText = `${db.historico.length} atendidos`;
+
+        // 2. Atualizar Chamada Principal
+        const chamado = db.chamadoAtual;
+        const mainTicketCode = document.getElementById('main-ticket-code');
+        const mainPatientName = document.getElementById('main-patient-name');
+        const mainRoomDest = document.getElementById('main-room-destination');
+        const mainPriorityBadge = document.getElementById('main-priority-badge');
+        const mainPriorityText = document.getElementById('main-priority-text');
+        const mainCalledTime = document.getElementById('main-called-time');
+        const mainTicketType = document.getElementById('main-ticket-type');
+
+        if (chamado) {
+          const cfg = MANCHESTER_CONFIG[chamado.prioridade] || MANCHESTER_CONFIG[5];
+
+          mainTicketCode.innerText = chamado.codigo;
+          mainPatientName.innerText = chamado.nome;
+          mainRoomDest.innerText = chamado.consultorio || "Consultório 01";
+          mainCalledTime.innerHTML = `<span class="material-symbols-outlined text-[16px]">schedule</span> Chamado às ${chamado.horaChamada || '--:--'}`;
+          mainTicketType.innerText = `Atendimento • ${cfg.nome}`;
+
+          // Badge de prioridade
+          mainPriorityBadge.className = `inline-flex items-center gap-space-2xs px-space-md py-space-2xs rounded-full font-label-md text-label-md font-bold ${cfg.bg} ${cfg.text}`;
+          mainPriorityBadge.innerHTML = `<span class="material-symbols-outlined text-[18px]">${cfg.icon}</span><span>Prioridade: ${cfg.nome}</span>`;
+
+          // Toca sino se for uma senha nova convocada
+          if (lastKnownTicket !== chamado.codigo) {
+            lastKnownTicket = chamado.codigo;
+            playHospitalChime();
+
+            // Efeito visual de destaque
+            const container = document.getElementById('main-callout-container');
+            container.classList.add('ring-4', 'ring-primary');
+            setTimeout(() => container.classList.remove('ring-4', 'ring-primary'), 2000);
+          }
+        }
+
+        // 3. Atualizar Histórico (os 3 anteriores ao chamado atual)
+        const historyContainer = document.getElementById('history-grid-cards');
+        historyContainer.innerHTML = '';
+
+        // Filtra para pegar os 3 anteriores
+        const listaHistorico = (db.historico || []).slice(1, 4);
+
+        if (listaHistorico.length === 0) {
+          historyContainer.innerHTML = `
+            <div class="col-span-3 bg-surface-pure rounded-2xl p-space-lg text-center text-text-muted font-body-md shadow-sm">
+              Nenhuma chamada anterior registrada nesta sessão.
+            </div>
+          `;
+        } else {
+          listaHistorico.forEach(item => {
+            const cfg = MANCHESTER_CONFIG[item.prioridade] || MANCHESTER_CONFIG[5];
+            const card = document.createElement('article');
+            card.className = "relative bg-surface-pure rounded-2xl shadow-sm p-space-lg flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow duration-200";
+            card.innerHTML = `
+              <div class="flex items-start justify-between">
+                <span class="font-headline-lg text-headline-lg ${cfg.text} font-bold tracking-tight">
+                  ${item.codigo}
+                </span>
+                <span class="inline-flex items-center gap-1 ${cfg.bg} ${cfg.text} px-space-sm py-space-2xs rounded-full font-label-sm text-label-sm font-bold">
+                  ${cfg.nome}
+                </span>
+              </div>
+              <div class="flex flex-col gap-space-2xs">
+                <span class="font-caption text-caption text-text-muted">Paciente</span>
+                <h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate" title="${item.nome}">
+                  ${item.nome}
+                </h4>
+              </div>
+              <div class="pt-space-sm bg-surface-soft p-space-sm rounded-xl flex items-center justify-between">
+                <div class="flex items-center gap-space-2xs">
+                  <span class="material-symbols-outlined text-secondary text-[20px]">meeting_room</span>
+                  <span class="font-label-md text-label-md text-on-surface font-semibold">${item.consultorio || 'Consultório'}</span>
+                </div>
+                <div class="flex items-center gap-1 text-text-muted font-caption text-caption">
+                  <span class="material-symbols-outlined text-[16px]">schedule</span>
+                  ${item.horaChamada || '--:--'}
+                </div>
+              </div>
+            `;
+            historyContainer.appendChild(card);
+          });
+        }
+      }
+
+      // Event Listeners
+      window.addEventListener('storage', renderPanel);
+      window.addEventListener('quickmed_update', renderPanel);
+
+      document.getElementById('btn-replay-audio').addEventListener('click', playHospitalChime);
+
+      // Inicia relógio e render inicial
+      setInterval(updateClock, 1000);
+      updateClock();
+      renderPanel();
+    })();
+  </script>
+</body>
+</html>
