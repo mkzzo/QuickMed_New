@@ -1,5 +1,7 @@
 # 🏥 Quickmed — Sistema Hospitalar Integrado de Triagem & Chamadas
 
+> 🔗 **Demonstração Online:** ([DEMO](https://quickmeddisplayhospitalar.vercel.app))
+
 Plataforma modular para automação de atendimento hospitalar baseada no **Protocolo de Manchester**. O projeto integra totem de senhas, triagem clínica com coleta de sinais vitais, painel de chamada audiovisual para recepção e controle de consultório médico.
 
 ---
