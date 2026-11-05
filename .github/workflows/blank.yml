@@ -31,9 +31,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Use '.' se o index.html estiver solto na raiz do repositório.
-          # Se estiver dentro de uma pasta (ex: public, src, dist), coloque o nome dela aqui (ex: './public').
-          path: '.'
+          path: './Pagina_Inicial'
 
       - name: Deploy to GitHub Pages
         id: deployment
