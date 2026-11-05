@@ -3,7 +3,6 @@ name: Deploy static content to Pages
 on:
   push:
     branches: ["main"]
-
   workflow_dispatch:
 
 permissions:
@@ -25,13 +24,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Criar index raiz para redirecionamento
+        run: |
+          if [ ! -f index.html ]; then
+            echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=./Pagina_Inicial/"></head><body><a href="./Pagina_Inicial/">Entrar no QuickMed</a></body></html>' > index.html
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './Pagina_Inicial'
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
