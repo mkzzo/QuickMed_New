@@ -47,7 +47,7 @@ Após um período de congelamento, o projeto foi totalmente reestruturado e mode
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/mkzzo/QuickMed_New/tree/main/Quickmed_Display_Hospitalar
+   git clone https://github.com/mkzzo/Quickmed_Display_Hospitalar
 2. Acesse a pasta do projeto:
 ```bash
 cd quickmed-display
