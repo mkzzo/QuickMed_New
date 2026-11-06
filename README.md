@@ -53,6 +53,7 @@ Após um período de congelamento, o projeto foi totalmente reestruturado e mode
 cd quickmed-display
 ```
 
+
 3. Abra o arquivo `index.html` diretamente em seu navegador (ou utilize extensões como o **Live Server** do VS Code).
 
 4. Abra o **Painel TV**, o **Totem** e a tela do **Médico** em abas separadas para testar a comunicação em tempo real.
