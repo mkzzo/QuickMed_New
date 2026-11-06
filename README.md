@@ -2,9 +2,6 @@
 
 > Plataforma web para agendamento, consulta e gestão de atendimentos médicos e serviços de saúde.
 
-[![Deploy static content to Pages](https://github.com/mkzzo/QuickMed_New/actions/workflows/main.yml/badge.svg)](https://github.com/mkzzo/QuickMed_New/actions/workflows/main.yml)
-[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-blue?style=flat&logo=github)](https://mkzzo.github.io/QuickMed_New/)
-
 ---
 
 ## 📌 Sobre o Projeto
