@@ -1,65 +1,94 @@
-# 🏥 Quickmed — Sistema Hospitalar Integrado de Triagem & Chamadas
+# 🏥 QuickMed
 
-> 🔗 **Demonstração Online:** ([DEMO](https://quickmeddisplayhospitalar.vercel.app))
+> Plataforma web para agendamento, consulta e gestão de atendimentos médicos e serviços de saúde.
 
-Plataforma modular para automação de atendimento hospitalar baseada no **Protocolo de Manchester**. O projeto integra totem de senhas, triagem clínica com coleta de sinais vitais, painel de chamada audiovisual para recepção e controle de consultório médico.
-
----
-
-## 🚀 O que há de novo? (Atualização do Projeto)
-
-Este projeto nasceu originalmente como um protótipo acadêmico em **Linguagem C**, operando exclusivamente via **terminal CLI** com estruturas de dados em memória (filas circulares e listas encadeadas). 
-
-Após um período de congelamento, o projeto foi totalmente reestruturado e modernizado:
-
-* **Desacoplamento do Terminal:** A lógica pura de regras de fila, cálculo de espera e cascata de prioridades foi extraída do console e transformada em módulos reativos.
-* **Interface Visual Moderna (Stitch UI + Tailwind CSS):** Substituição de menus textuais por telas responsivas e táteis, seguindo design clínico limpo e acessível (WCAG AA).
-* **Expansão do Protocolo de Manchester (5 Níveis):** Evolução da triagem simples de 3 níveis para os 5 níveis clínicos canônicos (Emergência, Muito Urgente, Urgente, Pouco Urgente e Não Urgente).
-* **Sincronização em Tempo Real Sem Servidor:** Implementação de barramento de eventos via `LocalStorage` e `StorageEvent`, permitindo comunicação instantânea entre diferentes abas, tablets e telões sem dependência de backend pago.
-* **Sonoplastia Hospitalar:** Inclusão de sintetizador de áudio nativo (Web Audio API) para emissão automática do alerta sonoro de chamada (*ding-dong*) no telão.
+[![Deploy static content to Pages](https://github.com/mkzzo/QuickMed_New/actions/workflows/main.yml/badge.svg)](https://github.com/mkzzo/QuickMed_New/actions/workflows/main.yml)
+[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-blue?style=flat&logo=github)](https://mkzzo.github.io/QuickMed_New/)
 
 ---
 
-## 🧩 Módulos do Sistema
+## 📌 Sobre o Projeto
 
-| Módulo | Caminho | Descrição |
-| :--- | :--- | :--- |
-| **Portal Central** | `index.html` | Ponto de entrada com acesso rápido a todas as estações de trabalho. |
-| **Painel TV** | `Painel_Chamadas/painelDeChamadas.html` | Exibição pública em tempo real, convocação visual monumental, sinal sonoro e histórico de atendimentos. |
-| **Triagem Manchester** | `Triagem_Enfermeiro/autoAtendimentoEnf.html` | Estação de enfermagem para aferição de sinais vitais (PA, FC, Temp, EVA) e classificação por cores de risco. |
-| **Totem de Entrada** | `Totem_AutoAtendimento/autoAtendimento.html` | Terminal touch para retirada de senhas gerais, preferenciais (Lei 14.624) e botão de socorro imediato. |
-| **Médico (Desktop)** | `Visao_Medico/povDoutor.html` | Painel de consultório com fila clínica completa e prontuário da triagem. |
-| **Médico (Mobile)** | `Visao_Medico_Mobile/povDoutorMobile.html` | Versão compacta para smartphone do médico plantonista com chamada e rechamada em um toque. |
-| **Acompanhamento** | `Acompanhamento_Paciente/acompanhamentoPaciente.html` | Interface móvel para o paciente acompanhar a fila remotamente. |
+O **QuickMed** é uma interface web desenvolvida para conectar pacientes a serviços de saúde de forma ágil, intuitiva e centralizada. A plataforma oferece navegação completa entre página inicial informativa, visualização de especialidades médicas e áreas de autenticação para usuários e profissionais.
+
+### 🌐 Demonstração Online
+Acesse a versão publicada diretamente pelo GitHub Pages:  
+👉 **[https://mkzzo.github.io/QuickMed_New/](https://mkzzo.github.io/QuickMed_New/)**
+
+---
+
+## 🚀 Funcionalidades
+
+- **Página Inicial Institucional:** Apresentação da plataforma, serviços oferecidos e chamadas para ação.
+- **Fluxo de Autenticação:** Telas dedicadas para login e cadastro de usuários/pacientes.
+- **Navegação Responsiva:** Estrutura visual adaptada para visualização em diferentes resoluções.
+- **Deploy Automatizado (CI/CD):** Pipeline configurada via **GitHub Actions** para entrega contínua diretamente no **GitHub Pages**.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **HTML5 & Vanilla JavaScript:** Lógica de negócio, sincronização entre janelas e manipulação de estado.
-* **Tailwind CSS:** Estilização utilitária moderna e responsiva.
-* **Web Audio API:** Geração de harmônicos sonoros para notificações hospitalares.
-* **Linguagem C (Legado / Motor):** Estruturas de dados originais (filas de prioridade e listas ligadas de histórico).
+- **HTML5:** Semântica e estrutura de conteúdo.
+- **CSS3:** Estilização, layout responsivo e identidade visual.
+- **JavaScript (Vanilla):** Comportamentos interativos da interface.
+- **GitHub Actions:** Automação de compilação e deploy contínuo (CI/CD).
+- **GitHub Pages:** Hospedagem estática do projeto.
 
 ---
 
-## 💻 Como Rodar Localmente
+## 📂 Estrutura de Diretórios
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/mkzzo/Quickmed_Display_Hospitalar
-2. Acesse a pasta do projeto:
-```bash
-cd quickmed-display
+```text
+QuickMed_New/
+├── .github/
+│   └── workflows/
+│       └── main.yml        # Pipeline de deploy contínuo no GitHub Pages
+├── Pagina_Inicial/         # Estrutura principal da interface
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
+├── assets/                 # Imagens, ícones e mídias estáticas
+├── index.html              # Ponto de entrada raiz
+└── README.md               # Documentação do projeto
 ```
 
+---
 
-3. Abra o arquivo `index.html` diretamente em seu navegador (ou utilize extensões como o **Live Server** do VS Code).
+## 💻 Como Executar Localmente
 
-4. Abra o **Painel TV**, o **Totem** e a tela do **Médico** em abas separadas para testar a comunicação em tempo real.
+### Pré-requisitos
+- Um navegador web atualizado (Chrome, Edge, Firefox ou Safari).
+- [Git](https://git-scm.com/) instalado no computador.
+
+### Passo a passo
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/mkzzo/QuickMed_New.git
+   ```
+
+2. **Acesse o diretório do projeto:**
+   ```bash
+   cd QuickMed_New
+   ```
+
+3. **Abra no navegador:**
+   - Dê um duplo clique no arquivo `index.html` na raiz; ou
+   - Utilize a extensão **Live Server** no VS Code para rodar um servidor local com recarregamento em tempo real.
 
 ---
 
-## 🌐 Deploy
+## ⚙️ Pipeline CI/CD
 
-Este repositório está estruturado para deploy contínuo gratuito no **GitHub Pages** ou na **Vercel** com suporte nativo a HTTPS.
+O projeto conta com um workflow automatizado em `.github/workflows/main.yml`. A cada novo `push` ou `pull request` integrado na branch `main`:
+1. O runner `ubuntu-latest` realiza o checkout do repositório.
+2. Os artefatos estáticos são empacotados.
+3. O deploy é publicado instantaneamente no ambiente do GitHub Pages.
+
+---
+
+## 👤 Autor
+
+Desenvolvido por **Hiago Melo**.
+
+- **GitHub:** [@mkzzo](https://github.com/mkzzo)
